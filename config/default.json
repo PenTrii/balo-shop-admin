@@ -1,0 +1,12 @@
+{
+    "server": {
+        "host": "0.0.0.0",
+        "port": 4444
+    },
+    "secret_key": "key_admin",
+    "key": "user_sid",
+    "server_key": "AAAApXF_vRg:APA91bFXn5ck8Eb9KkI1zEKD9r4pO7Eeo_Td0eUXC5E8pyzLWdxopODzLgb3SAUVpeVNIm8goa8lLNYGkie_jYC0zVuqNsJhUX2L4ca77knl5xzubbnO_lNadB76WbBRS8Bg9jflnO7m",
+    "sender_id": 710573800728,
+    "mongodb_uri": "mongodb+srv://root:root123@cluster0-6q0hr.mongodb.net/storedecor-e4068?retryWrites=true&w=majority",
+    "_id_slider": "5de1eefe1c9d4400007692f2"
+}

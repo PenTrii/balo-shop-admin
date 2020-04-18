@@ -1,0 +1,113 @@
+<% include ../partials/header %>
+<div class="">
+    <h2 class="text-center">Add Product Form</h2>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 pb-5">
+            <!--Form with header-->
+            <form action="/admin/product/add-product" method="post" enctype="multipart/form-data">
+                <div class="card border-primary rounded-0">
+                    <div class="card-header p-0">
+                        <div class="bg-info text-white text-center py-2">
+                            <h3>Products</h3>
+                            <p class="m-0"></p>
+                        </div>
+                    </div>
+                    <div class="card-body p-3">
+                        <!--Body-->
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fa fa-drivers-license-o text-info"></i></div>
+                                </div>
+                                <input type="text" class="form-control" id="nameproduct" name="nameproduct" placeholder="Name in product" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fa fa-credit-card text-info"></i></div>
+                                </div>
+                                <input type="number" class="form-control" id="price" name="price" placeholder="Price in product $$$" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fa fa-edit text-info"></i></div>
+                                </div>
+                                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Quantity in product" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fa fa-align-justify text-info"></i></div>
+                                </div>
+                                <textarea class="form-control" rows="10" id="description" name="description" placeholder="Description in product" required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fa fa-edit text-info"></i></div>
+                                </div>
+                                <input type="text" class="form-control" id="material" name="material" placeholder="Material in product" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fa fa-edit text-info"></i></div>
+                                </div>
+                                <input type="text" class="form-control" id="size" name="size" placeholder="Size in product" required>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fa fa-edit text-info"></i></div>
+                                </div>
+                                <input type="text" class="form-control" id="warranty" name="warranty" placeholder="Warranty in product" required>
+                            </div>
+                        </div>
+
+                        <select id="idcategory" name="idcategory" class="form-control" style="margin-bottom: 15px;">
+                            <% categorys.forEach(function (category) {%>
+                                <option value="<%=category._id%>"><span><%=category.name%></span></option>
+                            <%});%>
+                        </select>
+
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fa fa-file-picture-o text-info"></i></div>
+                                </div>
+                                <input type="file" name="img" id="img" multiple class="form-control">
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <input type="submit" value="Submit" onclick="selectAll();" class="btn btn-info btn-block rounded-0 py-2">
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+            <!--Form with header-->
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    document.getElementById('submit').onclick = () => {
+        const select = document.querySelector("select[name='idcategory']");
+        const value = select.value;
+        const option = select.querySelector("option[value='${value}']");
+    }
+</script>

@@ -1,0 +1,48 @@
+<% include ../partials/header %>
+
+<div class="row border border-default">
+
+        <div class="bg-secondary text-white p-2 mb-3 col-3 text-center d-none d-sm-block">
+            <p>Picture</p>
+        </div>
+        <div class="bg-secondary text-white p-2 mb-3 col-3 text-center d-block d-sm-none small">
+            <p>Pic</p>
+        </div>
+        <div class="bg-secondary text-white p-2 mb-3 col-3 text-center d-none d-sm-block">
+            <p>Name Product</p>
+        </div>
+        <div class="bg-secondary text-white p-2 mb-3 col-3 text-center d-block d-sm-none small">
+            <p>Name</p>
+        </div>
+        <div class="bg-secondary text-white p-2 mb-3 col-3 text-center d-none d-sm-block">
+            <p>Quantity</p>
+        </div>
+        <div class="bg-secondary text-white p-2 mb-3 col-3 text-center d-block d-sm-none small">
+            <p>Qua</p>
+        </div>
+        <div class="bg-secondary text-white p-2 mb-3 col-3 text-center d-none d-sm-block">
+            <p>Action</p>
+        </div>
+        <div class="bg-secondary text-white p-2 mb-3 col-3 text-center d-block d-sm-none small">
+            <p>Act</p>
+        </div>
+
+    <% for(let index =0 ; index < orddetail.length ; index++) {%>
+        <div class="py-2 col-3 text-center">
+            <img src="<%=prod[index].img[0]%>" width="100px" height="100px">
+        </div>
+        <div class="py-2 col-3 text-center">
+            <p><%=prod[index].nameproduct%></p>
+        </div>
+        <div class="py-2 col-3 text-center">
+            <p><%=orddetail[index].quantity%></p>
+        </div>
+        <div class="py-2 col-3 text-center">
+            <p>
+                <a class="fa fa-eye" href="/admin/product/view-product/<%=orddetail[index].idp%>"></a>
+                <a class="fa fa-remove" href="/admin/order/view-order/<%=orders._id%>/orderdetail/<%=orddetail[index]._id%>"></a>
+            </p>
+        </div>
+        
+        <%};%>
+</div>

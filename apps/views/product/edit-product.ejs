@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/file.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <div class="">
+        <h2 class="text-center">Edit Product Form</h2>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6 pb-5">
+                <!--Form with header-->
+                <form action="/admin/product/edit-product/<%=product._id%>" method="POST" enctype="multipart/form-data">
+                    <div class="card border-primary rounded-0">
+                        <div class="card-header p-0">
+                            <div class="bg-info text-white text-center py-2">
+                                <h3>Products</h3>
+                                <p class="m-0"></p>
+                            </div>
+                        </div>
+                        <div class="card-body p-3">
+                            <!--Body-->
+                            <div class="form-group">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="fa fa-drivers-license-o text-info"></i></div>
+                                    </div>
+                                    <input type="text" class="form-control" id="nameproduct" name="nameproduct" value="<%=product.nameproduct%>" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="fa fa-credit-card text-info"></i></div>
+                                    </div>
+                                    <input type="number" class="form-control" id="price" name="price" value="<%=product.price%>" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="fa fa-edit text-info"></i></div>
+                                    </div>
+                                    <input type="number" class="form-control" id="quantity" name="quantity" value="<%=product.quantity%>" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="fa fa-align-justify text-info"></i></div>
+                                    </div>
+                                    <textarea class="form-control" rows="10" id="description" name="description" required><%=product.description%></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="fa fa-edit text-info"></i></div>
+                                    </div>
+                                    <input type="text" class="form-control" id="material" name="material" value="<%=product.material%>" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="fa fa-edit text-info"></i></div>
+                                    </div>
+                                    <input type="text" class="form-control" id="size" name="size" value="<%=product.size%>" required>
+                                </div>
+                            </div>
+
+                            
+
+                            <div class="form-group">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="fa fa-edit text-info"></i></div>
+                                    </div>
+                                    <input type="text" class="form-control" id="warranty" name="warranty" value="<%=product.warranty%>" required>
+                                </div>
+                            </div>
+
+                            <select id="idcategory" name="idcategory" class="form-control" style="margin-bottom: 15px;">
+                                <% categorys.forEach(function (result) {%>
+                                    <% if (product.idcategory == result._id) {%>
+                                        <option value="<%=result._id%>" selected><span><%=result.name%></span></option>
+                                    <%} else {%>
+                                        <option value="<%=result._id%>"><span><%=result.name%></span></option>
+                                    <%}%>
+                                <%});%>
+                            </select>
+
+                            <fieldset class="form-group">
+                                <a href="javascript:void(0)" onclick="$('#pro-image').click()"> Choose file</a>
+                                <input type="file" id="pro-image" name="pro-image" style="display: none;" class="form-control" multiple>
+                            </fieldset>
+                            <div class="preview-images-zone">
+                                <% for (let i = 0; i < product.img.length; i++) {%>
+                                <div class="preview-image preview-show-<%=i%>">
+                                    <div class="image-cancel" data-no="<%=i%>">x</div>
+                                    <div class="image-zone" id="imge"><img id="pro-img-<%=i%>" src="<%=product.img[i]%>"></div>
+                                </div>
+                                <%}%>
+                            </div>
+                            <br><br>
+                            <div class="text-center">
+                                <input type="submit" value="Submit" onclick="selectAll();" class="btn btn-info btn-block rounded-0 py-2">
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+                <!--Form with header-->
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        document.getElementById('submit').onclick = () => {
+            var selectImage = $('#imge img').value();
+            const select = document.querySelector("select[name='idcategory']");
+            const value = select.value;
+            const option = select.querySelector("option[value='${value}']");
+        }
+    </script>
+    
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function() {
+            document.getElementById('pro-image').addEventListener('change', readImage, false);
+            
+            $( ".preview-images-zone" ).sortable();
+            
+            $(document).on('click', '.image-cancel', function() {
+                let no = $(this).data('no');
+                $(".preview-image.preview-show-"+no).remove();
+            });
+        });
+
+        var num = 100;
+        function readImage() {
+            if (window.File && window.FileList && window.FileReader) {
+                var files = event.target.files; //FileList object
+                var output = $(".preview-images-zone");
+
+                for (let i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    if (!file.type.match('image')) continue;
+                    
+                    var picReader = new FileReader();
+                    
+                    picReader.addEventListener('load', function (event) {
+                        var picFile = event.target;
+                        var html =  '<div class="preview-image preview-show-' + num + '">' +
+                                    '<div class="image-cancel" data-no="' + num + '">x</div>' +
+                                    '<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
+                                    '</div>';
+
+                        output.append(html);
+                        num = num + 1;
+                        $("#pro-image").val(files);
+                    });
+
+                    picReader.readAsDataURL(file);
+                }
+            } else {
+                console.log('Browser not support');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<% include ../partials/header %>
+	<div class="card">
+		<div class="container-fliud">
+			<div class="wrapper row">
+				<div class="preview col-md-6">
+					
+					<div class="preview-pic tab-content">
+						<div class="tab-pane active" id="pic-0"><img src="<%=url[0]%>" width="400px" height="400px"/></div>
+						<% for (let index = 1; index < url.length; index++) {%>
+							<div class="tab-pane" id="pic-<%=index%>"><img src="<%=url[index]%>" width="400px" height="400px"/></div>
+						<%}%>
+					</div>
+					<ul class="preview-thumbnail nav nav-tabs">
+						<li class="active"><a data-target="#pic-0" data-toggle="tab"><img src="<%=url[0]%>" width="100px" height="100px"/></a></li>
+						<% for (let index = 1; index < url.length; index++) {%>
+						<li><a data-target="#pic-<%=index%>" data-toggle="tab"><img src="<%=url[index]%>" width="100px" height="100px"/></a></li>
+						<%}%>
+					</ul>
+					
+				</div>
+				<div class="details col-md-6">
+					<h3 class="product-title"><%=product.nameproduct%></h3>
+					<div class="rating">
+						<div class="stars">
+							<span class="fa fa-star checked"> <%=product.point%></span>
+						</div>
+						<span class="review-no"><%=reviews%> reviews</span>
+					</div>
+					<p class="product"><%=product.description%></p>
+					<h4 class="price">price: <span><%=Intl.NumberFormat({ style: 'currency', currency: 'VND' }).format(product.price)%> vnđ</span></h4>
+					<p class="product"><strong>Size: </strong><%=product.size%></p>
+					<p class="product"><strong>Material: </strong><%=product.material%></p>
+					<p class="product"><strong>Warranty: </strong><%=product.warranty%></p>
+					<p class="product"><strong>Quantity: </strong><%=product.quantity%></p>
+					<h5 class="colors">colors:
+						<span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
+						<span class="color green"></span>
+						<span class="color blue"></span>
+						<span class="color red"></span>
+						<span class="color purple"></span>
+					</h5>
+				</div>
+			</div>
+		</div>
+	</div>

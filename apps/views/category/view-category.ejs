@@ -1,0 +1,54 @@
+<% include ../partials/header %>
+<div class="row border border-default">
+	<div class="bg-secondary text-white p-2 mb-3 col-2 text-center d-none d-sm-block">
+		<p>Picture</p>
+	</div>
+	<div class="bg-secondary text-white p-2 mb-3 col-2 text-center d-block d-sm-none small">
+		<p>Pic</p>
+	</div>
+	<div class="bg-secondary text-white p-2 mb-3 col-3 text-center d-none d-sm-block">
+		<p>Name Product</p>
+	</div>
+	<div class="bg-secondary text-white p-2 mb-3 col-3 text-center d-block d-sm-none small">
+		<p>Name</p>
+	</div>
+	<div class="bg-secondary text-white p-2 mb-3 col-3 text-center d-none d-sm-block">
+		<p>Price</p>
+	</div>
+	<div class="bg-secondary text-white p-2 mb-3 col-3 text-center d-block d-sm-none small">
+		<p>Pri</p>
+	</div>
+	<div class="bg-secondary text-white p-2 mb-3 col-2 text-center d-none d-sm-block">
+		<p>Quantity</p>
+	</div>
+	<div class="bg-secondary text-white p-2 mb-3 col-2 text-center d-block d-sm-none small">
+		<p>Qua</p>
+	</div>
+
+	<div class="bg-secondary text-white p-2 mb-3 col-2 text-center d-none d-sm-block">
+		<p>Action</p>
+	</div>
+	<div class="bg-secondary text-white p-2 mb-3 col-2 text-center d-block d-sm-none small">
+		<p>Act</p>
+	</div>
+
+	<% prod.forEach(function (product) { %>
+	<div class="py-2 col-2 text-center">
+		<img src="<%=product.img[0]%>" width="100px" height="100px">
+	</div>
+	<div class="py-2 col-3 text-center">
+		<p><%=product.nameproduct%></p>
+	</div>
+	<div class="py-2 col-3 text-center">
+		<p><%=Intl.NumberFormat('VN', { style: 'currency', currency: 'VND' }).format(product.price)%></p>
+	</div>
+	<div class="py-2 col-2 text-center">
+		<p><%=product.quantity%></p>
+	</div>
+	<div class="py-2 col-2 text-center">
+		<p>
+			<a class="fa fa-eye" href="/admin/product/view-product/<%=product._id%>"></a>
+		</p>
+	</div>
+	<%});%>
+</div>

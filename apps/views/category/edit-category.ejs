@@ -1,0 +1,61 @@
+<% include ../partials/header %>
+    <div class="">
+        <h2 class="text-center">Edit Category Form</h2>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6 pb-5">
+                <!--Form with header-->
+                <form action="/admin/category/edit-category/<%= category._id %>" method="post" enctype="multipart/form-data">
+                    <div class="card border-primary rounded-0">
+                        <div class="card-header p-0">
+                            <div class="bg-info text-white text-center py-2">
+                                <h3>Categories</h3>
+                                <p class="m-0"></p>
+                            </div>
+                        </div>
+                        <div class="card-body p-3">
+                            <!--Body-->
+                            <div class="form-group">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="fa fa-drivers-license-o text-info"></i></div>
+                                    </div>
+                                    <input type="text" value="<%= category.name %>" class="form-control" id="namecategory" name="namecategory" placeholder="Name in category" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="fa fa-file-picture-o text-info"></i></div>
+                                    </div>
+                                    <input type="file" name="img" id="img" onchange="readURL(this)" class="form-control">
+                                </div>
+                                <img id="blah" src="<%= category.img %>" width="100px" height="100px">
+                            </div>
+                            <br>
+                            <div class="text-center">
+                                <input type="submit" value="Submit" class="btn btn-info btn-block rounded-0 py-2">
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+                <!--Form with header-->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+       </script>
